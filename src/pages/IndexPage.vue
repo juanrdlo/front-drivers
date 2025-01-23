@@ -15,7 +15,7 @@
               :columns="columns"
               v-model:pagination="pagination"
               row-key="name"
-              :rows-per-page-options="[5,15,25]"
+              :rows-per-page-options="[5]"
               @request="paginationUpdate"
               :loading="loading"
             >
@@ -25,6 +25,9 @@
                 </q-td>
               </template>
             </q-table>
+          </div>
+          <div class="flex">
+            <q-btn color="primary" :to="{ name: 'add-route' }" label="+ Añadiro Ruta" dark/>
           </div>
         </main>
       </section>

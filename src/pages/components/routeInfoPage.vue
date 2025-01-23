@@ -87,7 +87,7 @@ export default {
       >
         <template v-slot:body-cell-priority="props">
           <q-td :props="props">
-            <q-checkbox dark v-model="props.row.priority"/>
+            <q-checkbox disable dark v-model="props.row.priority"/>
           </q-td>
         </template>
       </q-table>

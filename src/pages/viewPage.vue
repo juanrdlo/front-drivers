@@ -28,7 +28,11 @@ export default {
         .then(payload => {
           this.info = payload.data.data
           this.date = payload.data.data.date
-          this.rows = payload.data.data.orders.map((o, index) => ({ ...o, priority: Boolean(o.priority), index: index + 1 }))
+          this.rows = payload.data.data.orders.map((o, index) => ({
+            ...o,
+            priority: Boolean(o.priority),
+            index: index + 1
+          }))
           this.total = payload.data.data.orders.map(o => o.value).reduce((a, b) => a + b, 0)
           this.$q.loading.hide()
         })
@@ -44,7 +48,7 @@ export default {
 </script>
 
 <template>
-<main class="bg-dark h-screen fixed pt-10 w-full overflow-auto">
+  <main class="bg-dark h-screen fixed pt-10 w-full overflow-auto">
     <main class="flex flex-col">
       <section class="flex justify-center">
         <main class="flex flex-col w-[850px] text-white space-y-5">
@@ -52,7 +56,7 @@ export default {
             <span class="text-2xl">Ver y editar ruta</span>
           </div>
           <div v-if="info" class="flex justify-center">
-            <route-info-page :info="info" :drivers="drivers" :total="total" :rows="rows" />
+            <route-info-page :info="info" :drivers="drivers" :total="total" :rows="rows"/>
           </div>
         </main>
       </section>
