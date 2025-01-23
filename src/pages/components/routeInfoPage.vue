@@ -49,6 +49,7 @@ export default {
           priority: Boolean(o.priority),
           index: index + 1
         }))
+        this.date = value.date
         this.total = value.orders.map(o => o.value).reduce((a, b) => a + b, 0)
       }
     }
