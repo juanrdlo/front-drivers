@@ -8,8 +8,7 @@ export default {
   data: () => ({
     rows: [],
     total: 0,
-    info: null,
-    drivers: []
+    info: null
   }),
   async mounted () {
     this.rows = []
@@ -17,7 +16,6 @@ export default {
     this.drivers = []
     this.total = 0
 
-    await this.getAllDrivers()
     await this.getRouteById()
   },
   methods: {
@@ -36,12 +34,6 @@ export default {
           this.total = payload.data.data.orders.map(o => o.value).reduce((a, b) => a + b, 0)
           this.$q.loading.hide()
         })
-    },
-    getAllDrivers () {
-      return api.get('drivers')
-        .then(payload => {
-          this.drivers = payload.data
-        })
     }
   }
 }
@@ -55,8 +47,8 @@ export default {
           <div class="flex justify-center">
             <span class="text-2xl">Ver y editar ruta</span>
           </div>
-          <div v-if="info" class="flex justify-center">
-            <route-info-page :info="info" :drivers="drivers" :total="total" :rows="rows"/>
+          <div class="flex justify-center">
+            <route-info-page :info="info" :type="info ? 'view': 'add'"/>
           </div>
         </main>
       </section>
